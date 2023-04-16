@@ -3,6 +3,23 @@
 
 {% block content %}
 
-<h1>Hello World!!!</h1>
+{% if zipcode %}
+    {{zipcode}}
+{% endif %}
+
+    <div class="container">
+        {% if api %}
+            {% if api == "Error..." %}
+                <p>There was an errorr, please try agine... </p>
+            {% else %}
+            <div class="jumbotron {{ category_color }}">
+                <h1 class="display-4">{{ api.0.Category.Name }}</h1>
+                <p class="lead">Current {{ api.0.ReportingArea }} Air Quality: {{ api.0.AQI }}</p>
+                <p>{{ category_description }}</p>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div> 
+
 
 {% endblock %}
